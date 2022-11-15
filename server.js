@@ -78,9 +78,29 @@ app.delete("/deleteUser", (req, res) => {
 })
 
 
+app.post("/findUser", (req, res) => {
+    var response = res;
+    console.log((req.body.name));
+
+    MongoClient.connect(connectionString, function (err, client) {
+        if (err) throw err;
+
+        var db = client.db('user_account');
+        
+        db.collection('users').find( { name : new RegExp('.*' + req.body.name + '.*') } )
+        .toArray(function (err, result) {
+            if (err) {
+                res.status(400).send("Error fetching listings!");
+            } else {
+                res.json(result);
+            }
+         });
+    })
+})
+
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3000, function () {
+app.listen(3001, function () {
     console.log("teeeest 3000")
 });
