@@ -101,6 +101,6 @@ app.post("/findUser", (req, res) => {
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3001, function () {
+app.listen(3000, function () {
     console.log("teeeest 3000")
 });

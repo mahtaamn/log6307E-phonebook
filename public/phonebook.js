@@ -1,6 +1,6 @@
 /*function for sorting the table by header*/
 
-const baseURL = "http://localhost:3001/";
+const baseURL = "http://localhost:3000/";
 
 function sort_table(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
